@@ -20,7 +20,7 @@ public class Product {
 
     private String image;
 
-    @ManyToMany(mappedBy = "products")
+    @ManyToMany(mappedBy = "products",cascade = CascadeType.ALL)
     private Set<ShoppingCart> inCarts;
 
     public Product() {

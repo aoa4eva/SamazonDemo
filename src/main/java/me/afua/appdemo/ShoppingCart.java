@@ -13,11 +13,10 @@ public class ShoppingCart {
     @ManyToMany(cascade = CascadeType.ALL)
     private Set <Product> products;
 
-    @OneToOne(mappedBy = "cart")
+    @OneToOne
     AppUser customer;
 
-    //Use this to cascade any changes that are made to the shopping cart that affect the order 
-    @OneToOne(cascade = CascadeType.ALL)
+    @OneToOne
     private Order theOrder;
 
     public ShoppingCart() {

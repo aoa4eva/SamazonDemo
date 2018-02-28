@@ -14,10 +14,9 @@ public class Order {
     private ShoppingCart theCart;
 
     @ManyToOne
-    private Set <AppUser> orderUser;
+    private AppUser orderUser;
 
     public Order() {
-        orderUser = new HashSet<>();
     }
 
     public long getId() {
@@ -28,11 +27,11 @@ public class Order {
         this.id = id;
     }
 
-    public Set<AppUser> getOrderUser() {
+    public AppUser getOrderUser() {
         return orderUser;
     }
 
-    public void setOrderUser(Set<AppUser> orderUser) {
+    public void setOrderUser(AppUser orderUser) {
         this.orderUser = orderUser;
     }
 

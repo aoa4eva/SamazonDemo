@@ -14,6 +14,9 @@ public class UserService {
     @Autowired
     AppRoleRepository role;
 
+    @Autowired
+    OrderRepository orders;
+
     public void save(AppUser thisUser)
     {
         user.save(thisUser);
@@ -55,6 +58,13 @@ public class UserService {
         AppUser thisUser = getCurrentUser(auth);
         //Create an order:
         Order thisOrder = new Order();
+        thisOrder.setTheCart(thisUser.getCart());
+        thisOrder.setOrderUser(thisUser);
+        orders.save(thisOrder);
+        thisUser.setCart(new ShoppingCart());
+        user.save(thisUser);
+
+
 
     }
 }

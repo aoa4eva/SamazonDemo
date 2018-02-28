@@ -18,12 +18,11 @@ public class AppUser {
     @ManyToMany
     private Set<AppRole> roles;
 
-    @OneToOne(cascade = CascadeType.ALL)
+    @OneToOne(cascade = CascadeType.PERSIST)
     private ShoppingCart cart;
 
-    @OneToMany(mappedBy = "orderUser")
+    @OneToMany
     private Set<Order> myOrders;
-
 
     public AppUser() {
         this.roles = new HashSet<>();
@@ -82,6 +81,11 @@ public class AppUser {
 
     public void setMyOrders(Set<Order> myOrders) {
         this.myOrders = myOrders;
+    }
+
+    public void addOrder(Order order)
+    {
+        this.myOrders.add(order);
     }
 
     @Override

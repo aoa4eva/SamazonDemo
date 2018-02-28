@@ -50,21 +50,14 @@ AppRoleRepository roleRepository;
         AppUser newUser = new  AppUser();
         newUser.setEmail("user@email.com");
         newUser.setPassword("password");
-        userRepository.save(newUser);
         newUser.getCart().addProduct(p);
-        cartRepository.save(newUser.getCart());
+        userRepository.save(newUser);
 
-        newUser = new  AppUser();
-        newUser.setEmail("someuser@email.com");
-        newUser.setPassword("password");
-        userRepository.save(newUser);
-        newUser.getCart().addProduct(q);
-        userRepository.save(newUser);
+//        newUser = userRepository.findOne(new Long(1));
+ //       System.out.println(newUser.getEmail()+"'s products:"+newUser.toString());
+ //       System.out.println("Products in cart:"+newUser.getCart().getProducts());
 
         newUser = userRepository.findOne(new Long(1));
-        System.out.println(newUser.getEmail()+"'s products:"+newUser.toString());
-        System.out.println("Products in cart:"+newUser.getCart().getProducts());
-
         System.out.println(p);
     }
 }
