@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Title</title>
+</head>
+<body>
+<div th:each="eachProduct:${productList}">
+    <img th:src="${eachProduct.image}"></img>
+    <form th:action="@{/addtocart}" method="post">
+        <button th:inline="text" type="submit" name="productid" th:value="${eachProduct.id}">Add [[${eachProduct.title}]] to cart</button>
+    </form>
+</div>
+
+</body>
+</html>
