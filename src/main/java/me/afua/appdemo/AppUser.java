@@ -21,10 +21,14 @@ public class AppUser {
     @OneToOne(cascade = CascadeType.ALL)
     private ShoppingCart cart;
 
+    @OneToMany(mappedBy = "orderUser")
+    private Set<Order> myOrders;
+
 
     public AppUser() {
         this.roles = new HashSet<>();
         this.cart = new ShoppingCart();
+        this.myOrders = new HashSet<>();
     }
 
     public long getId() {
@@ -71,6 +75,15 @@ public class AppUser {
     {
         roles.add(r);
     }
+
+    public Set<Order> getMyOrders() {
+        return myOrders;
+    }
+
+    public void setMyOrders(Set<Order> myOrders) {
+        this.myOrders = myOrders;
+    }
+
     @Override
     public String toString() {
         return "AppUser{" +

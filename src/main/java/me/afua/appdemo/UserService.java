@@ -43,4 +43,18 @@ public class UserService {
     {
         return getCurrentUser(auth).getCart().getProducts();
     }
+
+    public Iterable<Order> orderHistory(Authentication auth)
+    {
+        AppUser thisUser = getCurrentUser(auth);
+        return thisUser.getMyOrders();
+    }
+
+    public void buyItems(Authentication auth)
+    {
+        AppUser thisUser = getCurrentUser(auth);
+        //Create an order:
+        Order thisOrder = new Order();
+
+    }
 }

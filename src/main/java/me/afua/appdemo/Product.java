@@ -89,6 +89,7 @@ public class Product {
             return false;
         else return true;
     }
+
     public boolean buy(int number)
     {
         if(canBuy(number))

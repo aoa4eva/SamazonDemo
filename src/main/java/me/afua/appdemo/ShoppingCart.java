@@ -16,6 +16,10 @@ public class ShoppingCart {
     @OneToOne(mappedBy = "cart")
     AppUser customer;
 
+    //Use this to cascade any changes that are made to the shopping cart that affect the order 
+    @OneToOne(cascade = CascadeType.ALL)
+    private Order theOrder;
+
     public ShoppingCart() {
         this.products = new HashSet<>();
     }
