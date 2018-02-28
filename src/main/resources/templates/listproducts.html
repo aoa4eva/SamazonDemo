@@ -2,9 +2,11 @@
 <html lang="en" xmlns:th="www.thymeleaf.org">
 <head>
     <meta charset="UTF-8"/>
-    <title>$Title$</title>
+    <title>All my products</title>
 </head>
 <body>
-$END$
+
+   <a th:href="@{/showcart}"><div th:text="${#lists.size(me.cart.products)+' items in cart'}" th:if="${me}"></div></a>
+   <div th:replace="fragments/lists::allproducts"></div>
 </body>
 </html>

@@ -10,7 +10,6 @@ public class AppRole {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
 
-
     private String roleName;
 
     @ManyToMany

@@ -18,13 +18,13 @@ public class AppUser {
     @ManyToMany
     private Set<AppRole> roles;
 
-    @OneToMany(mappedBy = "customer")
-    private Set <ShoppingCart> carts;
+    @OneToOne(cascade = CascadeType.ALL)
+    private ShoppingCart cart;
 
 
     public AppUser() {
         this.roles = new HashSet<>();
-        this.carts = new HashSet<>();
+        this.cart = new ShoppingCart();
     }
 
     public long getId() {
@@ -59,11 +59,25 @@ public class AppUser {
         this.roles = roles;
     }
 
-    public Set<ShoppingCart> getCarts() {
-        return carts;
+    public ShoppingCart getCart() {
+        return cart;
     }
 
-    public void setCarts(Set<ShoppingCart> carts) {
-        this.carts = carts;
+    public void setCart(ShoppingCart cart) {
+        this.cart = cart;
+    }
+
+    public void addRole(AppRole r)
+    {
+        roles.add(r);
+    }
+    @Override
+    public String toString() {
+        return "AppUser{" +
+                "id=" + id +
+                ", email='" + email + '\'' +
+                ", password='" + password + '\'' +
+                ", cart=" + cart +
+                '}';
     }
 }

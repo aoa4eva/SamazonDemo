@@ -3,9 +3,16 @@
       xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
 <head>
     <meta charset="UTF-8"/>
-    <title>$Title$</title>
+    <title>Title</title>
 </head>
 <body>
-$END$
+<form th:action="@{/signup}" th:object="${newuser}" method="post">
+    <input type="hidden" th:field="*{id}">
+    <span th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></span>
+    <input type="email" th:field="*{email}">
+    <span th:if="${#fields.hasErrors('password')}" th:errors="*{password}"></span>
+    <input type="password" th:field="*{password}">
+    <input type="submit" value="Add">
+</form>
 </body>
 </html>

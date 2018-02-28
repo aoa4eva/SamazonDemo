@@ -18,6 +18,8 @@ public class Product {
 
     private double price;
 
+    private String image;
+
     @ManyToMany(mappedBy = "products")
     private Set<ShoppingCart> inCarts;
 
@@ -71,5 +73,43 @@ public class Product {
 
     public void setInCarts(Set<ShoppingCart> inCarts) {
         this.inCarts = inCarts;
+    }
+
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
+    }
+
+    public boolean canBuy(int number)
+    {
+        if(number>this.quantity)
+            return false;
+        else return true;
+    }
+    public boolean buy(int number)
+    {
+        if(canBuy(number))
+        {
+            this.setQuantity(this.quantity-number);
+            return true;
+        }
+        else return false;
+
+    }
+
+    @Override
+    public String toString() {
+        return "Product{" +
+                "id=" + id +
+                ", title='" + title + '\'' +
+                ", description='" + description + '\'' +
+                ", quantity=" + quantity +
+                ", price=" + price +
+                ", image='" + image + '\'' +
+                ", inCarts=" + inCarts +
+                '}';
     }
 }

@@ -10,14 +10,13 @@ public class ShoppingCart {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
 
-    @ManyToMany
+    @ManyToMany(cascade = CascadeType.ALL)
     private Set <Product> products;
 
-    @ManyToOne
+    @OneToOne(mappedBy = "cart")
     AppUser customer;
 
     public ShoppingCart() {
-
         this.products = new HashSet<>();
     }
 
@@ -45,4 +44,15 @@ public class ShoppingCart {
         this.customer = customer;
     }
 
+    public void addProduct(Product p)
+    {
+        this.products.add(p);
+    }
+
+    @Override
+    public String toString() {
+        return "ShoppingCart{" +
+                "id=" + id +
+                '}';
+    }
 }

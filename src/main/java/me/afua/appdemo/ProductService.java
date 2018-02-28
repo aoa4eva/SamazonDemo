@@ -6,12 +6,22 @@ import org.springframework.stereotype.Service;
 import java.util.HashSet;
 
 @Service
-public class UserService {
+public class ProductService {
     @Autowired
     ProductRepository products;
 
-    public HashSet<Product> listProducts()
+    public Iterable<Product> listProducts()
     {
-        return (HashSet<Product>) products.findAll();
+        return (Iterable<Product>) products.findAll();
+    }
+
+    public Product find(long id)
+    {
+        return products.findOne(id);
+    }
+
+    public void save(Product p)
+    {
+        products.save(p);
     }
 }
